@@ -37,17 +37,17 @@ int main()
     fprintf(fpPant, "Eliminando y mostrando los promedios por alumno.\n");
 
 
-    cantElim = vaciarMostrarDetalleYProm(&lista, fpPant,
+//    cantElim = vaciarMostrarDetalleYProm(&lista, fpPant,
+//                                         compararFinal_MIO,
+//                                         acumularCalif_MIO,
+//                                         mostrarFinal_MIO,
+//                                         mostrarProm_MIO);
+/** invoque acá su versión de la función ...  **/
+    cantElim = vaciarMostrarDetalleYProm_MIO(&lista, fpPant,
                                          compararFinal_MIO,
                                          acumularCalif_MIO,
-                                         mostrarFinal_MIO,
+                                        mostrarFinal_MIO,
                                          mostrarProm_MIO);
-/** invoque acá su versión de la función ...  **/
-///    cantElim = vaciarMostrarDetalleYProm_MIO(&lista, fpPant,
-///                                         compararFinal_MIO,
-///                                         acumularCalif_MIO,
-///                                         mostrarFinal_MIO,
-///                                         mostrarProm_MIO);
 
     fprintf(fpPant, "- Se eliminaron %d nodos de la lista.\n\n", cantElim);
     if(fpPant != stdout && fpPant != stderr && fpPant != NULL)
