@@ -5,6 +5,8 @@
 
 Cuadrado::Cuadrado(double lado)
 {
+    if (lado<=0)
+        throw FiguraInvalidaException();
     this->lado = lado;
 }
 

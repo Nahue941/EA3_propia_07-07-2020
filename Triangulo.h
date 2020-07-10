@@ -8,8 +8,7 @@
 class Triangulo : public Figura
 {
 	private:
-		double base;
-		double altura;
+		double base, altura;
 
 	public:
 		Triangulo(double base,double altura);
