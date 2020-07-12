@@ -11,15 +11,6 @@
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /**//**//* ACÁ DEBE DESARROLLAR LAS FUNCIONES Y PRIMITIVAS PEDIDAS    *//**//**/
 /**//**//* ADEMÁS DE CUALQUIER OTRA FUNCIÓN QUE SE REQUIERA           *//**//**/
-int strcmp_(const char* s1, const char* s2)
-{
-    while (*s1 && *s1==*s2){
-        s1++;
-        s2++;
-    }
-    return * (char*)s1-* (char*)s2;
-}
-
 int promedio (float total, float k)//total / k, donde k es la cantidad de materias
 {
     int r = total / k;//guardo el entero de la division
@@ -80,7 +71,8 @@ void mostrarFinal_MIO(const void *d, FILE *fp)
 }
 
 
-int  compararFinal_MIO(const void *d1, const void *d2)
+int  compararFinal_MIO(const void *d1, const void *d2)  //Un caso curioso es que de la manera en que está planteado el tipo de dato tFinal, esta resolución es suficiente para comparar.
+                                                        //No tengo necesidad de castear un tFinal, porque la cadena de DNI está primera que el resto de datos.
 {
     const char* s1 = d1,* s2 = d2;
     while (*s1 && *s1==*s2){//Cuando no sea la misma cadena el programa retorna un valor distinto de 0.
@@ -113,16 +105,16 @@ void mostrarProm_MIO(const void *d2, int cantCalif, FILE *fp)//estoy pasando la 
 int  mostrarDeIzqADer_MIO(const tLista *p,
                           void(*mostrar)(const void *, FILE *), FILE *fp)
 {
-    tNodo *act = *p;
+    tNodo *aux = *p;
     int cant = 0;
-    if(act){
+    if(aux){
         mostrar(NULL,fp);
-        while(act->ant)
-            act = act->ant;
+        while(aux->ant)
+            aux = aux->ant;
 
-        while(act){
-            mostrar(act->info,fp);
-            act = act->sig;
+        while(aux){
+            mostrar(aux->info,fp);
+            aux = aux->sig;
             cant++;
         }
     }
@@ -141,7 +133,7 @@ void ordenarLista_MIO(tLista *p, int (*comparar)(const void *, const void *))
         nodMov = nodMov->ant;
 
     tNodo* nodFirst = nodMov;//NODFIRST es el nodo que va a apuntar al primer Nodo de la lista desordenada
-    tNodo* nodOrd = NULL;//El Nodo Ordenado va a ser NULL para que sea el anterior del primer ordenado
+    tNodo* nodOrd = NULL;//El Nodo de la lista una vez ordenada. Va a ser NULL porque el anterior del primer ordena tiene que apuntar a NULL
 
     while (nodFirst->sig){
         nodoMayorOcurrencia(nodFirst, auxCad, comparar);//BIEN

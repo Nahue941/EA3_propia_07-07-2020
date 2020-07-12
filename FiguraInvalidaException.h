@@ -3,16 +3,15 @@
 #ifndef FIGURAINVALIDAEXCEPTION_H_
 #define FIGURAINVALIDAEXCEPTION_H_
 
-#include <string.h>
+#include "Figura.h"
+#include <exception>
+using namespace std;
 
-class FiguraInvalidaException
+class FiguraInvalidaException : public exception
 {
-    private:
-        const char* mensaje;
-
     public:
-        FiguraInvalidaException() : mensaje ("Figura invalida"){};
-        const char* what() const throw() {return mensaje;};
+        FiguraInvalidaException();
+        const char* what();
 };
 
 
